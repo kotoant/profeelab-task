@@ -67,7 +67,7 @@ You should see something like the following:
 2019-10-30 23:01:14.076  INFO 7924 --- [           main] task.AccountServiceApplication           : Started AccountServiceApplication in 2.944 seconds (JVM running for 3.348)
 
 ```
-The application is now listening on ports `8080` for application and requests and `8081` for administration requests. If you press `^C`, the application will shut down gracefully, first closing the server socket, then waiting for in-flight requests to be processed, then shutting down the process itself.
+The application is now listening on ports `8080` for application requests and `8081` for administration requests. If you press `^C`, the application will shut down gracefully, first closing the server socket, then waiting for in-flight requests to be processed, then shutting down the process itself.
 
 However, while it’s up, let’s give it a whirl! [Click here to get first account][1]! [Click here to get second one][2]!
 
