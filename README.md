@@ -145,7 +145,7 @@ OK
 * Git as version control system
 * Maven to build project
 * Spring Boot for application bootstrapping
-* Guava
+* Guava for caching of locks
 * MyBatis for JDBC operations
 * HSQLDB for In-Memory database
 * JUnit, Mockito, AssertJ, Hamcrest for testing
@@ -161,6 +161,7 @@ So when we want to update the row we should always check its version.
 There is out-of-the-box solution for that from Hibernate.
 
 ## Further Enhancement
-We can provide more dao methods for CRUD operations: getAllAccounts (with offset and/or limit), deleteById, etc.
-We can also add audit information to the database the will contain whole transfer log plus history for all accounts.
+* We can add Swagger that enriches our service with comprehensive documentation as well as allows to automate testing of our API.
+* We can provide more dao methods for CRUD operations: getAllAccounts (with offset and/or limit), deleteById, etc.
+* We can also add audit information to the database the will contain whole transfer log plus history for all accounts.
 There is Hibernate Envers module for that purpose.

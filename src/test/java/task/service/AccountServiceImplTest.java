@@ -1,5 +1,6 @@
 package task.service;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,10 +13,13 @@ import task.manager.AccountManager;
 import task.model.Account;
 
 import java.math.BigDecimal;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -34,10 +38,14 @@ public class AccountServiceImplTest {
     private AccountManager accountManager;
     @Mock
     private AccountDao accountDao;
+    @Mock
+    private OrderedLocksProvider orderedLocksProvider;
 
     @Before
     public void setUp() throws Exception {
-        accountService = new AccountServiceImpl(accountManager, accountDao);
+        final Pair<Lock, Lock> pair = Pair.of(new ReentrantLock(), new ReentrantLock());
+        when(orderedLocksProvider.getOrderedLocks(anyLong(), anyLong())).thenReturn(pair);
+        accountService = new AccountServiceImpl(accountManager, accountDao, orderedLocksProvider);
     }
 
     @Test

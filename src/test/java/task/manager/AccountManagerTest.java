@@ -5,7 +5,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import task.config.AccountServiceConfig;
+import task.config.AccountManagerConfig;
+import task.config.DataSourceConfig;
 import task.dao.AccountDao;
 import task.exception.LimitExceededException;
 import task.exception.NoSuchAccountException;
@@ -24,7 +25,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
  * @author Anton Kotov (kotov-anton@yandex.ru)
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AccountServiceConfig.class)
+@ContextConfiguration(classes = {DataSourceConfig.class, AccountManagerConfig.class})
 public class AccountManagerTest {
 
     @Autowired
